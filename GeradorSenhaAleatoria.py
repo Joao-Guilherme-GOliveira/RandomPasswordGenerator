@@ -1,36 +1,36 @@
 import random
 import string
 
-def perguntar_tipos():
-    incluir_maiusculas = input("Deseja incluir letras maiusculas?(S/N):").strip().upper() == "S"
-    incluir_minusculas = input("Deseja incluir letras minusculas?(S/N):").strip().upper() == "S"
-    incluir_numeros = input("Deseja incluir numeros?(S/N):").strip().upper() == "S"
-    incluir_simbolos = input("Deseja incluir caracteres especiais??(S/N):").strip().upper() == "S"
-    return incluir_maiusculas,incluir_minusculas,incluir_numeros,incluir_simbolos
+def ask_types():
+    include_uppercase = input("Do you want to include uppercase letters?(Y/N):").strip().upper() == "Y"
+    include_lowercase = input("Do you want to include lowercase letters?(Y/N):").strip().upper() == "Y"
+    include_numbers = input("Do you want to include numbers?(Y/N):").strip().upper() == "Y"
+    include_symbols = input("Do you want to include symbols?(Y/N):").strip().upper() == "Y"
+    return include_uppercase,include_lowercase,include_numbers,include_symbols
 def main():
-    tamanho_senha = int(input("Digite o tamanho da sua senha:"))
+    password_length = int(input("How long is your password?"))
     
-    maiusculas,minusculas,numeros,simbolos = perguntar_tipos()
+    uppercase,lowercase,numbers,symbols = ask_types()
 
-    caracteres_possiveis = ""
-    if maiusculas:
-        caracteres_possiveis += string.ascii_uppercase
-    if minusculas:
-        caracteres_possiveis += string.ascii_lowercase
-    if numeros:
-        caracteres_possiveis += string.digits
-    if simbolos:
-        caracteres_possiveis += string.punctuation
+    possible_characters = ""
+    if uppercase:
+        possible_characters += string.ascii_uppercase
+    if lowercase:
+        possible_characters += string.ascii_lowercase
+    if numbers:
+        possible_characters += string.digits
+    if symbols:
+        possible_characters += string.punctuation
 
-    if not caracteres_possiveis:
-        print("Voce precisa incluir pelo menos um tipo de caractere.")
+    if not possible_characters:
+        print("You need to include at least one type of character")
         return
 
-    senha = ""
-    for i in range(tamanho_senha):
-        senha+=random.choice(caracteres_possiveis)
+    password = ""
+    for i in range(password_length):
+        password+=random.choice(possible_characters)
 
-    print(senha)
+    print(password)
 
 if __name__=="__main__":
     main()
